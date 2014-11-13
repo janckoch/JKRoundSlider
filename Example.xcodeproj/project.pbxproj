@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0153B6761A14E1AF009D5665 /* JKRoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153B6731A14E1AF009D5665 /* JKRoundButton.m */; };
+		0153B6771A14E1AF009D5665 /* JKRoundSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153B6751A14E1AF009D5665 /* JKRoundSlider.m */; };
+		0153B67A1A14E1E3009D5665 /* UIImage+JKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153B6791A14E1E3009D5665 /* UIImage+JKAdditions.m */; };
 		01B3A0BA1A110A2C009CAB5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B3A0B91A110A2C009CAB5F /* main.m */; };
 		01B3A0BD1A110A2C009CAB5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B3A0BC1A110A2C009CAB5F /* AppDelegate.m */; };
 		01B3A0C01A110A2C009CAB5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B3A0BF1A110A2C009CAB5F /* ViewController.m */; };
@@ -14,7 +17,6 @@
 		01B3A0C51A110A2C009CAB5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B3A0C41A110A2C009CAB5F /* Images.xcassets */; };
 		01B3A0C81A110A2C009CAB5F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B3A0C61A110A2C009CAB5F /* LaunchScreen.xib */; };
 		01B3A0D41A110A2C009CAB5F /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B3A0D31A110A2C009CAB5F /* ExampleTests.m */; };
-		01B3A0E01A110AD8009CAB5F /* JKRoundSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B3A0DF1A110AD8009CAB5F /* JKRoundSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0153B6721A14E1AF009D5665 /* JKRoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JKRoundButton.h; path = JKRoundControls/JKRoundButton.h; sourceTree = SOURCE_ROOT; };
+		0153B6731A14E1AF009D5665 /* JKRoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JKRoundButton.m; path = JKRoundControls/JKRoundButton.m; sourceTree = SOURCE_ROOT; };
+		0153B6741A14E1AF009D5665 /* JKRoundSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JKRoundSlider.h; path = JKRoundControls/JKRoundSlider.h; sourceTree = SOURCE_ROOT; };
+		0153B6751A14E1AF009D5665 /* JKRoundSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JKRoundSlider.m; path = JKRoundControls/JKRoundSlider.m; sourceTree = SOURCE_ROOT; };
+		0153B6781A14E1E3009D5665 /* UIImage+JKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+JKAdditions.h"; path = "JKRoundControls/UIImage+JKAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0153B6791A14E1E3009D5665 /* UIImage+JKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+JKAdditions.m"; path = "JKRoundControls/UIImage+JKAdditions.m"; sourceTree = SOURCE_ROOT; };
 		01B3A0B41A110A2C009CAB5F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B3A0B81A110A2C009CAB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01B3A0B91A110A2C009CAB5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,8 +49,6 @@
 		01B3A0CD1A110A2C009CAB5F /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B3A0D21A110A2C009CAB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01B3A0D31A110A2C009CAB5F /* ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTests.m; sourceTree = "<group>"; };
-		01B3A0DE1A110AD8009CAB5F /* JKRoundSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKRoundSlider.h; sourceTree = "<group>"; };
-		01B3A0DF1A110AD8009CAB5F /* JKRoundSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKRoundSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +90,7 @@
 		01B3A0B61A110A2C009CAB5F /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				01B3A0DD1A110AD8009CAB5F /* JKRoundSlider */,
+				01B3A0DD1A110AD8009CAB5F /* JKRoundControls */,
 				01B3A0BB1A110A2C009CAB5F /* AppDelegate.h */,
 				01B3A0BC1A110A2C009CAB5F /* AppDelegate.m */,
 				01B3A0BE1A110A2C009CAB5F /* ViewController.h */,
@@ -123,12 +129,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		01B3A0DD1A110AD8009CAB5F /* JKRoundSlider */ = {
+		01B3A0DD1A110AD8009CAB5F /* JKRoundControls */ = {
 			isa = PBXGroup;
 			children = (
-				01B3A0DE1A110AD8009CAB5F /* JKRoundSlider.h */,
-				01B3A0DF1A110AD8009CAB5F /* JKRoundSlider.m */,
+				0153B6721A14E1AF009D5665 /* JKRoundButton.h */,
+				0153B6731A14E1AF009D5665 /* JKRoundButton.m */,
+				0153B6741A14E1AF009D5665 /* JKRoundSlider.h */,
+				0153B6751A14E1AF009D5665 /* JKRoundSlider.m */,
+				0153B6781A14E1E3009D5665 /* UIImage+JKAdditions.h */,
+				0153B6791A14E1E3009D5665 /* UIImage+JKAdditions.m */,
 			);
+			name = JKRoundControls;
 			path = JKRoundSlider;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -233,7 +244,9 @@
 			files = (
 				01B3A0C01A110A2C009CAB5F /* ViewController.m in Sources */,
 				01B3A0BD1A110A2C009CAB5F /* AppDelegate.m in Sources */,
-				01B3A0E01A110AD8009CAB5F /* JKRoundSlider.m in Sources */,
+				0153B6761A14E1AF009D5665 /* JKRoundButton.m in Sources */,
+				0153B6771A14E1AF009D5665 /* JKRoundSlider.m in Sources */,
+				0153B67A1A14E1E3009D5665 /* UIImage+JKAdditions.m in Sources */,
 				01B3A0BA1A110A2C009CAB5F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

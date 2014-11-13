@@ -5,6 +5,7 @@
 //
 
 #import "JKRoundSlider.h"
+#import "UIImage+JKAdditions.h"
 
 #pragma mark - Helper Functions
 
@@ -67,62 +68,6 @@
     _title = @"";
     _font = [UIFont fontWithName:@"HelveticaNeue-Light" size:80];
     _toggleTouch = NO;
-}
-
-// Taken from http://stackoverflow.com/questions/603907/uiimage-resize-then-crop & edited
-- (void)resizeImageToRectIfNeeded:(CGRect)rect
-{
-    if (!CGSizeEqualToSize(self.image.size, rect.size)) {
-        UIImage *newImage = nil;
-        CGSize imageSize = self.image.size;
-        CGFloat width = imageSize.width;
-        CGFloat height = imageSize.height;
-        CGFloat targetWidth = rect.size.width;
-        CGFloat targetHeight = rect.size.height;
-        CGFloat scaleFactor = 0.0;
-        CGFloat scaledWidth = targetWidth;
-        CGFloat scaledHeight = targetHeight;
-        CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-
-        CGFloat widthFactor = targetWidth / width;
-        CGFloat heightFactor = targetHeight / height;
-
-        if (widthFactor > heightFactor) {
-            scaleFactor = widthFactor;
-        } else {
-            scaleFactor = heightFactor;
-        }
-
-        scaledWidth  = width * scaleFactor;
-        scaledHeight = height * scaleFactor;
-
-        if (widthFactor > heightFactor) {
-            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
-        } else {
-            if (widthFactor < heightFactor) {
-                thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-            }
-        }
-
-        UIGraphicsBeginImageContext(rect.size);
-
-        CGRect thumbnailRect = CGRectZero;
-        thumbnailRect.origin = thumbnailPoint;
-        thumbnailRect.size.width  = scaledWidth;
-        thumbnailRect.size.height = scaledHeight;
-
-        [self.image drawInRect:thumbnailRect];
-
-        newImage = UIGraphicsGetImageFromCurrentImageContext();
-        
-        if(newImage == nil) {
-            NSLog(@"could not scale image");
-        }
-
-        UIGraphicsEndImageContext();
-        
-        self.image = newImage;
-    }
 }
 
 - (CGPoint)pointFromAngle:(int)angleInt
@@ -212,7 +157,7 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
         [self drawSubtractedText:self.title inRect:sliderBodyInnerRect inContext:context];
     } else {
         // Draw Image
-        [self resizeImageToRectIfNeeded:sliderBodyInnerRect];
+        self.image = [self.image resizeImageToRectIfNeeded:sliderBodyInnerRect];
         CGContextSaveGState(context);
         [sliderBodyInnerPath addClip];
         [self.image drawInRect:sliderBodyInnerRect blendMode:kCGBlendModeNormal alpha:alphaValue];
@@ -362,7 +307,6 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
     self.angle = [self angleFromValue];
     [self setNeedsLayout];
     [self setNeedsDisplay];
-    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 @end
