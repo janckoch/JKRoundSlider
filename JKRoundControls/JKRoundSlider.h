@@ -6,7 +6,7 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface JKRoundSlider : UIControl
 
 @property (strong, nonatomic) IBInspectable UIColor *primaryColor;

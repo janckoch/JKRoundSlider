@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface JKRoundButton : UIButton
 
 @property (strong, nonatomic) IBInspectable NSString *title;

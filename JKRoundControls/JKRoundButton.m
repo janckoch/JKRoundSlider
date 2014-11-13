@@ -16,6 +16,7 @@
 @property (strong, nonatomic) CAShapeLayer *outerBody;
 @property (strong, nonatomic) UIColor *selectedColor;
 @property (strong, nonatomic) CALayer *imageLayer;
+@property (strong, nonatomic) UILabel *titleRenderLabel;
 
 @end
 
@@ -49,6 +50,7 @@
 
 - (void)setDefaults
 {
+    self.layer.contentsScale = [UIScreen mainScreen].scale;
     [self addTarget:self action:@selector(startPushAnimation:) forControlEvents:UIControlEventTouchDown];
     [self addTarget:self action:@selector(stopPushAnimation:) forControlEvents:UIControlEventTouchUpInside];
     [self addTarget:self action:@selector(stopPushAnimation:) forControlEvents:UIControlEventTouchUpOutside];
@@ -56,6 +58,7 @@
     _innerBorderWidth = 10.0;
     _normalStateColor = [UIColor whiteColor];
     _selectedColor = [_normalStateColor colorWithAlphaComponent:0.8];
+    _titleRenderLabel = [[UILabel alloc] init];
 }
 
 - (void)addLayers
@@ -68,7 +71,9 @@
     _innerBody = [CAShapeLayer layer];
     [self.layer addSublayer:_innerBody];
 
-    _imageLayer =[CALayer layer];
+    _imageLayer = [CALayer layer];
+    _imageLayer.contentsGravity = kCAGravityResizeAspect;
+    _imageLayer.contentsScale = [UIScreen mainScreen].scale;
 
     [self setLayerProperties];
 }
@@ -119,20 +124,21 @@
 
 - (void)drawSubtractedText:(NSString *)text
 {
-
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:[self bounds]];
-    [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [textLabel setFont:[UIFont systemFontOfSize:90.0]];
-    [textLabel setAdjustsFontSizeToFitWidth:YES];
-    [textLabel setMinimumScaleFactor:0.1];
-    [textLabel setNumberOfLines:1];
-    [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setTextColor:[UIColor whiteColor]];
-    NSNumber *baselineModifier = @(textLabel.font.lineHeight / 16.0);
-    [textLabel setAttributedText:[[NSAttributedString alloc] initWithString:text
-                                                                 attributes:@{ NSBaselineOffsetAttributeName : baselineModifier }]];
-    UIGraphicsBeginImageContext(textLabel.bounds.size);
-    [textLabel drawViewHierarchyInRect:textLabel.bounds afterScreenUpdates:YES];
+    CGRect frame = CGRectMake(0, 0, self.bounds.size.width * [UIScreen mainScreen].scale, self.bounds.size.height * [UIScreen mainScreen].scale);
+    [_titleRenderLabel setFrame:frame];
+    [_titleRenderLabel setTextAlignment:NSTextAlignmentCenter];
+    [_titleRenderLabel setFont:[UIFont systemFontOfSize:490.0]];
+    [_titleRenderLabel setAdjustsFontSizeToFitWidth:YES];
+    [_titleRenderLabel setMinimumScaleFactor:0.1];
+    [_titleRenderLabel setNumberOfLines:1];
+    [_titleRenderLabel setBackgroundColor:[UIColor clearColor]];
+    [_titleRenderLabel setTextColor:[UIColor whiteColor]];
+    NSNumber *baselineModifier = @(_titleRenderLabel.font.lineHeight / 16.0);
+    [_titleRenderLabel setAttributedText:[[NSAttributedString alloc] initWithString:text
+                                                                         attributes:@{ NSBaselineOffsetAttributeName : baselineModifier }]];
+    [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+    UIGraphicsBeginImageContext(_titleRenderLabel.bounds.size);
+    [_titleRenderLabel.layer drawInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     image = [image invertAlpha];
