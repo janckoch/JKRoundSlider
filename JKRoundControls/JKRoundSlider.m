@@ -253,7 +253,7 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
         CGPoint lastPoint = [touch locationInView:self];
         [self moveHandle:lastPoint];
         [self sendActionsForControlEvents:UIControlEventEditingDidBegin];
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
+        //        [self sendActionsForControlEvents:UIControlEventValueChanged];
         self.handleSize = HANDLE_SIZE_ACTIVE;
         [self setNeedsDisplay];
     }
@@ -269,8 +269,12 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
         // TODO: Check if still in toggle box
     } else {
         CGPoint lastPoint = [touch locationInView:self];
+        int oldValue = round(self.value);
         [self moveHandle:lastPoint];
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
+        int newValue = round(self.value);
+        if (oldValue != newValue) {
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
+        }
     }
     return YES;
 }
@@ -285,6 +289,7 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
         } else {
             [self setValue:100.0];
         }
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
     } else {
         [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
         self.handleSize = HANDLE_SIZE_INACTIVE;
